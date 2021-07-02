@@ -195,8 +195,8 @@ A few examples for updating a particular element in JSONArray are given here. Th
 | path| Explanation of the instruction| value | type |  
 | :----| :-----------------------------|:-----|:----:|
 |$.api_definition.version_data.versions.Default.extended_paths.ignored[1]|Updating the element indexed 1. Since this array contains JSONObject, the value should be a stringified JSONObject|"{<br/>\\"path\\":\\"/test-path/reply\\",<br/>\\"description\\":\\"Testing\\"<br/>}"|object|
-|$.api_definition.oauth_meta.allowed_authorize_types[0]|"TOKEN"| `NA` |
-|$.api_definition.allowed_ips[0]|"127.0.0.4"| `NA` |
+|$.api_definition.oauth_meta.allowed_authorize_types[0]|Updating the element indexed 0 | "TOKEN"| `NA` |
+|$.api_definition.allowed_ips[0]|Updating the element indexed 1 | "127.0.0.4"| `NA` |
 |$.hook_references[0]|Updating the element indexed 0. Since this array contains JSONObject, the value should be a stringified JSONObject|"{<br/>\\"event_name\\":\\"QuotaExceeded\\",<br/>\\"description\\": \\"Quota\\"<br/>}"|object|
 
 ### 4.Adding new field to a JSONObject
