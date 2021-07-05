@@ -316,7 +316,224 @@ To add a new field in any JSONObject, including the JSONOBjects inside JSONArray
 }
 ```
 ### Override Instructions JSON
-
+```javascript
+{
+  "overrideInstructions": [{
+    "path": "$.api_definition.name",
+    "value": "TestAPI"
+    },
+    {
+      "path": "$.api_definition.auth.auth_header_name",
+      "value": "authentication"
+    },
+    {
+      "path": "$.api_definition.proxy.target_url",
+      "value": "https://127.0.0.1"
+    },
+    {
+      "path": "$.api_definition.version_data.versions.Default.extended_paths.ignored[0].path",
+      "value": "/test-path-workflow/"
+    },
+    {
+      "path": "$.api_definition.version_data.versions.Default.paths.ignored",
+      "type": "list",
+      "value" : "{\"path\": \"/test123-path/\",\"method_actions\": {\"GET\": {\"action\": \"no_action\",\"code\": 200,\"data\": \"\",\"headers\": {}}}}"
+    },
+    {
+      "path": "$.api_definition.version_data.versions.Default.extended_paths.ignored",
+      "type": "list",
+      "value" : "{\"path\":\"/test-path1/\",\"method_actions\":{\"GET\":{\"action\":\"no_action\",\"code\":200,\"data\":\"\",\"headers\":{\"header1\":\"xyz\"}}}}"
+    },
+    {
+      "path": "$.api_definition.allowed_ips",
+      "type": "list.string",
+      "value" : "127.0.0.6"
+    },
+    {
+      "path": "$.hook_references",
+      "type": "list",
+      "value" : "{\"event_name\":\"Quota\",\"hook\":{\"api_model\":{},\"id\":\"12be6c0beba6db07a6000002\",\"org_id\":\"12b53d3aeba6db5c35000002\",\"name\":\"Test Post\",\"method\":\"POST\",\"target_path\":\"http://httpbin.org/post\",\"template_path\":\"\",\"header_map\":{\"x-tyk-test\":\"123456\",\"y-tyk-test\":\"098754\"},\"event_timeout\":1},\"event_timeout\":120}"
+    },
+    {
+      "path": "$.api_definition.version_data.versions.Default.extended_paths.ignored[1]",
+      "type": "object",
+      "value" : "{\"path\":\"/test-path/reply\",\"method_actions\":{\"GET\":{\"action\":\"Error\",\"code\":402,\"data\":\"{\\\"foo\\\":\\\"bar\\\"}\",\"headers\":{\"x-test\":\"test\"}}}}"
+    },
+    {
+      "path": "$.api_definition.oauth_meta.allowed_authorize_types[0]",
+      "value" : "TOKEN"
+    },
+    {
+      "path": "$.api_definition.allowed_ips[0]",
+      "value" : "127.0.0.4"
+    },
+    {
+      "path": "$.hook_references[0]",
+      "type": "object",
+      "value" : "{\"event_name\":\"QuotaExceeded\",\"hook\":{\"api_model\":{},\"id\":\"123be6c0beba6db07a6000002\",\"org_id\":\"123b53d3aeba6db5c35000002\",\"name\":\"TestPost\",\"method\":\"POST\",\"target_path\":\"http://httpbin.org/post\",\"template_path\":\"127.0.0.1\",\"header_map\":{\"x-tyk-test\":\"123456\"},\"event_timeout\":1},\"event_timeout\":80}"
+    },
+    {
+      "path": "$.api_definition.notifications",
+      "type": "object",
+      "value" : "{\"ID\" : 1,\"shared_secret\":\"\",\"oauth_on_keychange_url\":\"\"}"
+    },
+    {
+      "path": "$.hook_references[0].hook.header_map",
+      "type": "object",
+      "value" : "{\"x-tyk-test\": \"123456\",\"y-tyk-test\":\"1234\"}"
+    }]
+}
+```
+### Modified TYK JSON generated in target folder after build
+```javascript
+{
+	"api_definition": {
+		"name": "TestAPI",
+		"auth": {
+			"auth_header_name": "authentication"
+		},
+		"definition": {
+			"location": "header",
+			"key": ""
+		},
+		"proxy": {
+			"target_url": "https://127.0.0.1"
+		},
+		"version_data": {
+			"use_extended_paths": true,
+			"not_versioned": true,
+			"versions": {
+				"Default": {
+					"expires": "",
+					"name": "Default",
+					"paths": {
+						"ignored": [
+							{
+								"path": "/test123-path/",
+								"method_actions": {
+									"GET": {
+										"action": "no_action",
+										"code": 200,
+										"data": "",
+										"headers": {}
+									}
+								}
+							}
+						],
+						"white_list": [],
+						"black_list": []
+					},
+					"extended_paths": {
+						"ignored": [
+							{
+								"path": "/test-path-workflow/",
+								"method_actions": {
+									"GET": {
+										"action": "no_action",
+										"code": 200,
+										"data": "",
+										"headers": {}
+									}
+								}
+							},
+							{
+								"path": "/test-path/reply",
+								"method_actions": {
+									"GET": {
+										"action": "Error",
+										"code": 402,
+										"data": "{\"foo\":\"bar\"}",
+										"headers": {
+											"x-test": "test"
+										}
+									}
+								}
+							},
+							{
+								"path": "/test-path1/",
+								"method_actions": {
+									"GET": {
+										"action": "no_action",
+										"code": 200,
+										"data": "",
+										"headers": {
+											"header1": "xyz"
+										}
+									}
+								}
+							}
+						],
+						"white_list": [],
+						"black_list": []
+					},
+					"use_extended_paths": true
+				}
+			}
+		},
+		"use_oauth2": false,
+		"oauth_meta": {
+			"auth_login_redirect": "",
+			"allowed_access_types": [],
+			"allowed_authorize_types": [
+				"TOKEN"
+			]
+		},
+		"notifications": {
+			"ID": 1,
+			"shared_secret": "",
+			"oauth_on_keychange_url": ""
+		},
+		"enable_ip_whitelisting": true,
+		"allowed_ips": [
+			"127.0.0.4",
+			"127.0.0.6"
+		],
+		"use_keyless": false,
+		"enable_signature_checking": false,
+		"use_basic_auth": false,
+		"active": true,
+		"enable_batch_request_support": true
+	},
+	"hook_references": [
+		{
+			"event_name": "QuotaExceeded",
+			"hook": {
+				"api_model": {},
+				"id": "123be6c0beba6db07a6000002",
+				"org_id": "123b53d3aeba6db5c35000002",
+				"name": "TestPost",
+				"method": "POST",
+				"target_path": "http://httpbin.org/post",
+				"template_path": "127.0.0.1",
+				"header_map": {
+					"x-tyk-test": "123456",
+					"y-tyk-test": "1234"
+				},
+				"event_timeout": 1
+			},
+			"event_timeout": 80
+		},
+		{
+			"event_timeout": 120,
+			"hook": {
+				"api_model": {},
+				"id": "12be6c0beba6db07a6000002",
+				"org_id": "12b53d3aeba6db5c35000002",
+				"name": "Test Post",
+				"method": "POST",
+				"target_path": "http://httpbin.org/post",
+				"template_path": "",
+				"header_map": {
+					"x-tyk-test": "123456",
+					"y-tyk-test": "098754"
+				},
+				"event_timeout": 1
+			},
+			"event_name": "Quota"
+		}
+	]
+}
+```
 
 
 
