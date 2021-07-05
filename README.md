@@ -169,7 +169,7 @@ An Example to update each field is shown in the tables below along with appropri
 |$.api_definition.oauth_meta.auth_login_redirect| The value is a string. | "abc123" | `NA` |
 |$.api_definition.notifications.shared_secret|The value is a string. | "abc123" | `NA` |
 |$.api_definition.notifications.oauth_on_keychange_url|The value is a string. | "abc123" | `NA` |
-|$.api_definition.version_data.versions.Default.extended_paths.ignored[0].path| "/test-path-workflow/" | `NA` |
+|$.api_definition.version_data.versions.Default.extended_paths.ignored[0].path|The value is a string. | "/test-path-workflow/" | `NA` |
 
 ### 2. Adding an element into JSONArray
 
@@ -177,7 +177,7 @@ The overrideInstructions to insert into a JSONArray containing JSONObjects, have
 
 | path| Explanation of the instruction| value | type |  
 | :----| :-----------------------------|:-----|:----:|
-|$.api_definition.version_data.versions.Default.paths.ignored|The value is s string. <br/> It is an IP address|"127.0.0.1"|list.string|
+|$.api_definition.version_data.versions.Default.paths.ignored|Follow the instructions mentioned above this table. The value provided here is just for illustration. Refer the example section for TYK JSON structure.|"{<br/>\\"path\\":\\"/test/reply1\\",<br/>\\"description\\":\\"Testing\\"<br/>}"|list|
 |$.api_definition.version_data.versions.Default.paths.white_list|The value is s string. <br/> It is an IP address|"127.0.0.2"|list.string|
 |$.api_definition.version_data.versions.Default.paths.black_list|The value is s string. <br/> It is an IP address|"127.0.0.3"|list.string|
 |$.api_definition.version_data.versions.Default.extended_paths.ignored|Follow the instructions mentioned above this table. The value provided here is just for illustration. Refer the example section for TYK JSON structure.|"{<br/>\\"path\\":\\"/test/reply1\\",<br/>\\"description\\":\\"Testing\\"<br/>}"|list|
