@@ -206,7 +206,7 @@ To add a new field in any JSONObject, including the JSONOBjects inside JSONArray
 | path| Explanation of the instruction| value | type |  
 | :----| :-----------------------------|:-----|:----:|
 |$.api_definition.notifications | To add a field ID in notifications JSONObject | "{<br/> \\"ID\\" : 1, <br/> \\"shared_secret\\":\\"\\", <br/> \\"oauth_on_keychange_url\\":\\"\\" <br/>}" | object |
-|$.hook_references[0].hook.header_map | To add a field in header_map in the 0 indexed element in hook_references JSONArray | "{ <br/> \\"x-tyk-test\\": \\"123456\\" <br/> \\"y-tyk-test\\":\\"1234\\" <br/> }" | object |
+|$.hook_references[0].hook.header_map | To add a field in header_map in the 0 indexed element in hook_references JSONArray | "{ <br/> \\"x-tyk-test\\": \\"123456\\", <br/> \\"y-tyk-test\\":\\"1234\\" <br/> }" | object |
 
 ## Example
 
